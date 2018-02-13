@@ -24,6 +24,10 @@ public class Traps : MonoBehaviour {
             print("Collision");
             //calls damage function in PlayerScript
             player.Damage(1);
+
+
+            //for knockback feature
+            //StartCoroutine(player.Knockback(0.05f, 100, player.transform.position));
         }
     }
 }
