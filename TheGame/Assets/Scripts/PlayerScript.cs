@@ -29,12 +29,30 @@ public class PlayerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Move_Player();
+        Touch_Move_Player();
+        Keyboard_Move_Player();
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(direction * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
 
     }
 
-    void Move_Player()
+    void Touch_Move_Player()
+    {
+        if (Input.touchCount > 0)
+        {
+            var touch = Input.GetTouch(0);
+            if (touch.position.x < Screen.width / 2)
+            {
+                direction = -1;
+            }
+            else
+            {
+                direction = 1;
+            }
+        }
+    }
+
+    //Keyboard controls
+    void Keyboard_Move_Player()
     {
         float moveX = Input.GetAxis("Horizontal");
         if(moveX > 0)
