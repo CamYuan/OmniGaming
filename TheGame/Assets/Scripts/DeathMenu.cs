@@ -35,7 +35,7 @@ public class DeathMenu : MonoBehaviour {
     }
     public void MainMenu()
     {
-        Application.LoadLevel(1);
+        Application.LoadLevel(0);
     }
     public void Quit()
     {
