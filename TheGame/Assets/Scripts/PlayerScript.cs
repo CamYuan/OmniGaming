@@ -100,24 +100,26 @@ public class PlayerScript : MonoBehaviour {
     //takes away health point  
     public void Damage(int dmg)
     {
-        //checks to see if hit will kill you 
-        if (curHealth + dmg > maxHealth)
-        {  
-            //resets back to starting health
-            curHealth = 0;
-            print("GAME OVER!");
-
-            Death.YouLost();
+        if (gameObject.GetComponent<Animation>().IsPlaying("Player_RedFlash") == false)
+        {
+            gameObject.GetComponent<Animation>().Play("Player_RedFlash");
+            curHealth += dmg;
             
-
-            //restarts the level. Can change later to send to main menu
-            //Application.LoadLevel(Application.loadedLevel);
+            //checks to see if hit will kill you
+            if(curHealth > maxHealth)
+            {
+                print("GAME OVER!");
+                Death.YouLost();
+                //resets health
+                curHealth = 2;
+            }
         }
-        //changes adds damage to current health
+
         else
         {
-            curHealth += dmg;
+            print("Invinsible");
         }
+
     }
 
 
