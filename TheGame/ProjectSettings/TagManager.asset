@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trap
   - EndScreen
+  - Ground
   layers:
   - Default
   - TransparentFX
